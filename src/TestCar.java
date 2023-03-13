@@ -19,15 +19,16 @@ public class TestCar {
                 5
         );
 
-        Car car=new Car("Opel","Astra",12,123,BodyType.HATCHBACK);
-        Bus bus=new Bus("Mercedes","Conecto","13","B",BodyType.PICKUP);
-
 
 
     }
 
     private static class NoLicenseException extends Exception {
     }
+
+
+
+
 
 
 }

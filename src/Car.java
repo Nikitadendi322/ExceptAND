@@ -1,23 +1,25 @@
 public class Car extends Transport<DriverB> implements Competing {
     private BodyType bodyType;
-    public Car(String brand, String model, double engineVolume, int driver, BodyType bodyType) {
+    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
         this.setBodyType(bodyType);
+        this.setDiagnosticPassed(true);
     }
 
 
 
 
-    @Override
+
     public void startMove() {
         System.out.println("Автомобиль марки" + getBrand() + "начал движение");
 
     }
-    @Override
+
     public void finishMove() {
         System.out.println("Автомобиль марки" + getBrand() + "закончил движение");
 
     }
+
 
     @Override
     public void pitStop() {
@@ -49,10 +51,12 @@ public class Car extends Transport<DriverB> implements Competing {
         return Type.CAR;
     }
 
+
     @Override
-    public boolean passDiagnostic() throws TransportTypeException {
-        throw new TransportTypeException("Автомобили могут проходить диагностику");
+    public boolean passDiagnostic(){
+        return this.isDiagnosticPassed();
     }
+
 
     public BodyType getBodyType() {
         return bodyType;

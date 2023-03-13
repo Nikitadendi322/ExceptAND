@@ -5,10 +5,12 @@ public abstract class Transport<T extends Driver> implements Competing {
     private final String model;
     private double engineVolume;
     private boolean diagnosticPassed;
+    private Type type;
+
 
     private T driver;
 
-    public Transport(String brand, String model, double engineVolume, int driver) {
+    public Transport(String brand, String model, double engineVolume, T driver) {
         if (brand == null || brand.isEmpty()) {
             brand = "default";
         }
@@ -40,6 +42,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     public boolean isDiagnosticPassed() {
         return diagnosticPassed;
     }
+
 
     public void setEngineVolume(double engineVolume) {
         if (engineVolume <= 0) ;

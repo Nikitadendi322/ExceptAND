@@ -1,7 +1,8 @@
 public class Truck extends Transport<DriverC> {
 
     public Truck(String brand, String model, double engineVolume, DriverC driver) {
-        super(brand, model, engineVolume, driver.getExperienceInYear());
+        super(brand, model, engineVolume, driver);
+        this.setDiagnosticPassed(true);
     }
 
     @Override
@@ -9,14 +10,16 @@ public class Truck extends Transport<DriverC> {
         System.out.println("PIT-STOP у Грузовика");
 
     }
+
     @Override
-    public Type getType(){
+    public Type getType() {
         return Type.TRUCK;
     }
-    public void printType(boolean getLoadCapacity, LoadCapacity loadCapacity){
-        if (getLoadCapacity(loadCapacity)==null) {
+
+    public void printType(boolean getLoadCapacity, LoadCapacity loadCapacity) {
+        if (getLoadCapacity(loadCapacity) == null) {
             System.out.println("Не достаточно данных");
-        }else {
+        } else {
             System.out.println(getLoadCapacity);
         }
     }
@@ -40,10 +43,13 @@ public class Truck extends Transport<DriverC> {
         int maxSpeed = (int) (minFound + (maxFound - minFound) * Math.random());
         System.out.println("Максимальная скорость Грузовика" + maxSpeed);
     }
-    public LoadCapacity getLoadCapacity(LoadCapacity loadCapacity){return loadCapacity; }
+
+    public LoadCapacity getLoadCapacity(LoadCapacity loadCapacity) {
+        return loadCapacity;
+    }
 
     @Override
-    public boolean passDiagnostic() throws TransportTypeException {
-        throw new TransportTypeException("Грузовые автомобили могут проходить диагностику");
+    public boolean passDiagnostic(){
+        return this.isDiagnosticPassed();
     }
 }

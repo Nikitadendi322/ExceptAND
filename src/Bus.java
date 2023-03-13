@@ -3,26 +3,21 @@ public class Bus extends Transport<DriverD> {
 
 
 
-    public Bus(String brand, String model, String engineVolume, String driver, BodyType bodyType) {
+    public Bus(String brand, String model, double engineVolume, DriverD driver, BodyType bodyType) {
         super(brand, model, engineVolume, driver);
         this.pitStop();
         this.circleTime();
         this.maxSpeed();
         this.getType();
         this.setBodyType(bodyType);
-
-    }
-    @Override
-    public void startMove() {
-        System.out.println("Автобус марки" + getBrand() + "начал движение");
+        this.setDiagnosticPassed(false);
 
     }
 
+
     @Override
-    public void finishMove() {
-        System.out.println("Автобус марки" + getBrand() + "закончил движение");
-
-
+    public void setDiagnosticPassed(boolean diagnosticPassed) {
+        super.setDiagnosticPassed(diagnosticPassed);
     }
 
     @Override
@@ -56,10 +51,12 @@ public class Bus extends Transport<DriverD> {
 
     }
 
+
     @Override
     public boolean passDiagnostic() throws TransportTypeException {
-        throw new TransportTypeException("Автобусы диагностику проходить не должны");
+        throw new TransportTypeException("Автобусам проходить диагностику не нужно");
     }
+
 
     public BodyType getBodyType() {
         return bodyType;
@@ -68,4 +65,6 @@ public class Bus extends Transport<DriverD> {
     public void setBodyType(BodyType bodyType) {
         this.bodyType = bodyType;
     }
+
+
 }

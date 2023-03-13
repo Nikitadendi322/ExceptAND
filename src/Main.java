@@ -1,5 +1,8 @@
-public class Main {
-    public static void main(String[] args) {
+
+
+public class Main{
+    
+    public static void main(String[] args) throws TransportTypeException {
         for (int i = 1; i <= 4; i++) {
             DriverB driverB = new DriverB("Driver №" + i, true, 5 + i);
             Car car = new Car(
@@ -29,10 +32,28 @@ public class Main {
             printInfo(bus);
             printInfo(truck);
 
+            System.out.println(truck.passDiagnostic());
+            System.out.println(car.passDiagnostic());
+            System.out.println();
+
+            truck.passDiagnostic();
+            car.passDiagnostic();
+            bus.passDiagnostic();
+
+
+
+
 
 
         }
+
     }
+
+
+
+
+
+
     private static void printInfo(Transport<?> transport){
         System.out.println("Водитель"+transport.getDriver().getName()+"управляет автомобилем"+transport.getBrand()+" и будет учавстовать в заездах");
     }
